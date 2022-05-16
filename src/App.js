@@ -1,25 +1,41 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { useState } from 'react';
+import 'bootstrap/dist/css/bootstrap.css';
+import Header from './component/Header';
+import DashboardPage from './pages/DashboardPage';
+import AddJoueur from './pages/AddJoueur';
+
+
+
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+
+  const [lien, setLien] = useState('dash');
+
+  function AffichePage() {
+       
+        
+    switch (lien){
+        case 'dash':return <DashboardPage />;
+        case 'addJoueur':return <AddJoueur />;
+            
+            default: <DashboardPage />
+    }
+            
+
 }
 
+
+  return (
+    <>
+
+      {/* <Header modifyParentStateValue={setLien}/> */}
+      <AffichePage  />
+        
+    
+  
+
+    </>
+
+  )
+}
 export default App;
